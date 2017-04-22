@@ -11,4 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require breezy
+//= require boot
+//= require_tree ./layouts
+//= require_tree ./views
+//= require_tree ./components
 //= require_tree .
