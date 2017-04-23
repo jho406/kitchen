@@ -4,6 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import View from '../components/view'
 
 const Hello = props => (
   <div>Hello {props.name}!</div>
@@ -17,9 +18,4 @@ Hello.propTypes = {
   name: React.PropTypes.string
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+window.View = View

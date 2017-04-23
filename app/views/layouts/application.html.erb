@@ -6,23 +6,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %> 
+    <%= javascript_pack_tag 'application' %>
     <script type="text/javascript">
-    document.addEventListener('breezy:load', function(event){
-      var props = {
-        view: event.data.view,
-        data:  event.data.data
-      }
-      ReactDOM.render(React.createElement(window.App.Components.View, props), document.getElementById('app'));
-    });
+      document.addEventListener('breezy:load', function(event){
+        var props = {
+          view: event.data.view,
+          data:  event.data.data
+        }
+        ReactDOM.render(React.createElement(window.View, props), document.getElementById('app'));
+      });
 
-    $(function(){ <%= breezy_snippet %> });
-
+      document.addEventListener('DOMContentLoaded', function(){
+        <%= breezy_snippet %>
+      });
   </script>
 </head>
-<div id='app'></div>
+<div id='app'></div> <!--wtf.....-->
 
   <body>
+    <div id='app'></div>
     <%= yield %>
   </body>
 </html>
