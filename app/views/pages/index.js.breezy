@@ -1,0 +1,29 @@
+json.header do |json|
+  json.juice_cart 30
+  json.total_cart 40
+
+  json.notifications []
+end
+
+json.products do
+  page_num = params[:page]
+
+  json.array!(Product.page(page_num), key: :id) do |product|
+    json.key product.id
+    json.name product.name
+    json.quantity product.qty
+  end
+end
+
+json.resource defer: :manual do
+  json.body "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc leo, ultrices vitae molestie ut, vehicula quis urna. Maecenas ligula ligula, semper vitae augue sit amet, suscipit cursus lacus. Sed blandit turpis lorem, et malesuada leo pharetra in. Vivamus iaculis mauris vel dignissim malesuada. Cras iaculis posuere imperdiet. Cras dictum bibendum dui. Sed dolor diam, consequat non lorem at, sagittis sollicitudin turpis. Etiam massa ligula, convallis in suscipit vel, semper feugiat odio. Donec fringilla metus vitae ultricies tristique. Suspendisse in vestibulum velit."
+end
+
+json.chat defer: :manual do
+  json.array!(Message.all, key: :id) do |msg|
+    json.text msg.txt
+  end
+end
+
+json.dashboard do
+end

@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ActiveRecord::Base.transaction do
+  product_1 = Product.create(name: 'fish', qty: 50, votes: 50, product_type: 'other')
+  product_2 = Product.create(name: 'crackers', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'bean', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'sauce', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'shirt', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'tie', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'pants', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'socks', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'laptop', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'monitor', qty: 50, votes: 50, product_type: 'other')
+  Product.create(name: 'apple J', qty: 50, votes: 50, product_type: 'juice')
+  Product.create(name: 'Tang', qty: 50, votes: 50, product_type: 'juice')
+  Product.create(name: 'Hi-C', qty: 50, votes: 50, product_type: 'juice')
+  Product.create(name: 'mango juice', qty: 50, votes: 50, product_type: 'juice')
+  Product.create(name: 'milk', qty: 50, votes: 50, product_type: 'juice')
+  Product.create(name: 'oj', qty: 50, votes: 50, product_type: 'juice')
+  product_3 = Product.create(name: 'water', qty: 50, votes: 50, product_type: 'juice')
+  product_4 = Product.create(name: 'coffee', qty: 50, votes: 50, product_type: 'juice')
+
+  Cart.create(product: product_1, qty: 5)
+  Cart.create(product: product_2, qty: 5)
+  Cart.create(product: product_3, qty: 5)
+  Cart.create(product: product_4, qty: 5)
+
+  Message.create(body: 'hello')
+  Message.create(body: 'hi again')
+  Message.create(body: 'wow')
+  Message.create(body: 'its working')
+  Message.create(body: 'some sample messages')
+  Message.create(body: 'where to?')
+  Message.create(body: 'what time is it')
+  Message.create(body: 'hello again')
+end
