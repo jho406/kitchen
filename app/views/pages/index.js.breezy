@@ -21,7 +21,7 @@ json.products do
     end
   end
 
-  json.pagination_snippet "#{paginate products}"
+  json.pagination_snippet "#{paginate(products, {prefix_path: 'products'})}"
 end
 
 json.resource defer: :manual do

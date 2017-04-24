@@ -6,9 +6,12 @@
     total_pages:   total number of pages
     per_page:      number of items to fetch per page
     remote:        data-remote
--%>
+  -%>
+<% if prefix_path %>
+  <% url = url + (url.include?('?') ? '&' : '?') + '_breezy_filter=' + prefix_path %>
+<% end %>
 <li class="page<%= ' current disabled' if page.current? %>">
-  <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} do |name|
+  <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel, 'data-bz-remote': true } do |name|
     link_to(name, '#')
   end
 %>

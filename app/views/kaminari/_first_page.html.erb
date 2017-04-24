@@ -6,7 +6,10 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
+<% if prefix_path %>
+  <% url = url + (url.include?('?') ? '&' : '?') + '_breezy_filter=' + prefix_path %>
+<% end %>
+
 <li class="first">
-  <%%>
-  <%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote %>
+  <%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote, 'data-bz-remote': true %>
 </li>
