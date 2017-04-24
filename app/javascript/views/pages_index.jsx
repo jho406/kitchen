@@ -1,8 +1,8 @@
 import {Views} from '../components/view'
-
+import {Tabs, Pane} from '../components/tabs'
 Views.PagesIndex = (json) => {
   console.log(json)
-  let products = json.products.map((item)=>{
+  let products = json.products.list.map((item)=>{
     return (
       <li className="list-group-item" key={item.key}>
         <p>{item.name}</p>
@@ -35,6 +35,8 @@ Views.PagesIndex = (json) => {
     </nav>
   )
 
+  let pagination_snippet = {__html: json.products.pagination_snippet}
+
   return (
     <div>
       <div>
@@ -43,38 +45,23 @@ Views.PagesIndex = (json) => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8 col-lg-offset-0 col-md-8 col-md-offset-0">
-            <div>
-              <ul className="nav nav-tabs">
-                <li className="active"><a href="#tab-1" role="tab" data-toggle="tab">First Tab</a></li>
-                <li><a href="#tab-2" role="tab" data-toggle="tab">Chat </a></li>
-                <li><a href="#tab-3" role="tab" data-toggle="tab">LIVE SEARCH</a></li>
-              </ul>
-              <div className="tab-content">
-                <div role="tabpanel" className="tab-pane active" id="tab-1">
-                  <p>First tab content.</p>
-                  <ul className="list-group">
-                    {products}
-                  </ul>
-                </div>
-                <div role="tabpanel" className="tab-pane" id="tab-2">
-                  <p>Second tab content.</p>
-                </div>
-                <div role="tabpanel" className="tab-pane" id="tab-3">
-                  <p>Third tab content.</p>
-                </div>
-              </div>
-            </div>
-            <nav>
-              <ul className="pagination">
-                <li><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-                <li><a aria-label="Next"><span aria-hidden="true">»</span></a></li>
-              </ul>
-            </nav>
+            <Tabs>
+              <Pane label='Products' >
+                <p>First tab content.</p>
+                <ul className="list-group">
+                  {products}
+                </ul>
+
+                <nav dangerouslySetInnerHTML={pagination_snippet} />
+              </Pane>
+              <Pane label="Resources" href='?_breezy_filter=resource' data-bz-remote data-bz-push-state={false}>
+                {
+                  json.resource ?
+                  json.resource.body :
+                  (<img src={json.meta.loading_image_path} />)
+                }
+               </Pane>
+            </Tabs>
           </div>
           <div className="col-lg-4 col-md-4">
             <div className="well"><span>Text of the well</span></div>

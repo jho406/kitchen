@@ -5,17 +5,27 @@ json.header do |json|
   json.notifications []
 end
 
+json.meta do
+  json.loading_image_path image_path('box.gif')
+end
+
 json.products do
   page_num = params[:page]
+  products = Product.page(page_num).per(5)
 
-  json.array!(Product.page(page_num), key: :id) do |product|
-    json.key product.id
-    json.name product.name
-    json.quantity product.qty
+  json.list do
+    json.array!(products, key: :id) do |product|
+      json.key product.id
+      json.name product.name
+      json.quantity product.qty
+    end
   end
+
+  json.pagination_snippet "#{paginate products}"
 end
 
 json.resource defer: :manual do
+  sleep 5
   json.body "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc leo, ultrices vitae molestie ut, vehicula quis urna. Maecenas ligula ligula, semper vitae augue sit amet, suscipit cursus lacus. Sed blandit turpis lorem, et malesuada leo pharetra in. Vivamus iaculis mauris vel dignissim malesuada. Cras iaculis posuere imperdiet. Cras dictum bibendum dui. Sed dolor diam, consequat non lorem at, sagittis sollicitudin turpis. Etiam massa ligula, convallis in suscipit vel, semper feugiat odio. Donec fringilla metus vitae ultricies tristique. Suspendisse in vestibulum velit."
 end
 
