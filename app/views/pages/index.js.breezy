@@ -1,6 +1,6 @@
 json.header do |json|
-  json.juice_cart 30
-  json.total_cart 40
+  json.juice_cart Cart.where(product_id: 1).count
+  json.total_cart Cart.count
 
   json.notifications []
 end
@@ -15,6 +15,7 @@ json.products do
 
   json.list do
     json.array!(products, key: :id) do |product|
+      json.id product.id
       json.key product.id
       json.name product.name
       json.quantity product.qty
@@ -35,5 +36,5 @@ json.chat defer: :manual do
   end
 end
 
-json.dashboard do
+json.metrics do
 end

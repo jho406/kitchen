@@ -6,6 +6,8 @@ Views.PagesIndex = (json) => {
     return (
       <li className="list-group-item" key={item.key}>
         <p>{item.name}</p>
+        <a href={"/cart?id="+item.key} data-bz-remote='post'>Add to Cart</a>
+        <a href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote='get'>update me</a>
         <div><span className="badge" style={{fontSize: 9}}>{item.quantity}</span></div>
       </li>
     )
@@ -20,8 +22,8 @@ Views.PagesIndex = (json) => {
         <div className="collapse navbar-collapse" id="navcol-1">
           <ul className="nav navbar-nav navbar-right">
             <li role="presentation" className="active"><a href="#">Home </a></li>
-            <li role="presentation"><a href="#">Juice Cart (2)</a></li>
-            <li role="presentation"><a href="#">Cart (8)</a></li>
+            <li role="presentation"><a href="#">Juice Cart ({json.header.juice_cart})</a></li>
+            <li role="presentation"><a href="#">Cart ({json.header.total_cart})</a></li>
             <li className="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" className="dropdown-toggle">Notifications </a>
               <ul role="menu" className="dropdown-menu">
                 <li role="presentation"><a href="#">First Item</a></li>

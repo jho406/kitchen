@@ -7,7 +7,13 @@
     remote:        data-remote
 -%>
 <% if prefix_path %>
-  <% url = url + (url.include?('?') ? '&' : '?') + '_breezy_filter=' + prefix_path %>
+  <% uri = URI(url) %>
+  <% n_params = CGI.parse(uri.query || '') %>
+  <% n_params.delete('__') %>
+  <% n_params.delete('_breezy_filter') %>
+  <% n_params['_breezy_filter'] = prefix_path %>
+  <% uri.query = URI.encode_www_form(n_params) %>
+  <% url = uri.to_s %>
 <% end %>
 <li class="last">
   <%= link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, remote: remote, 'data-bz-remote': true  %>
