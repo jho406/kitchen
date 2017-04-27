@@ -34,7 +34,7 @@ json.metrics do
   json.purchases defer: :auto do
     sleep 2
     json.labels [1,2,3,4]
-    json.series [[5,9,7,8]]
+    json.series [[7,9,7,8]]
   end
 
   json.returns defer: :auto do
