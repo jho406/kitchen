@@ -1,5 +1,7 @@
 import {Views} from '../components/view'
 import {Tabs, Pane} from '../components/tabs'
+import ChartistGraph from 'react-chartist'
+
 Views.PagesIndex = (json) => {
   console.log(json)
   let products = json.products.list.map((item)=>{
@@ -66,10 +68,25 @@ Views.PagesIndex = (json) => {
             </Tabs>
           </div>
           <div className="col-lg-4 col-md-4">
-            <div className="well"><span>Text of the well</span></div>
-            <div className="well"><span>Text of the well</span></div>
-            <div className="well"><span>Text of the well</span></div>
-            <div className="well"><span>Text of the well</span></div>
+            <div className="well">
+              {json.metrics.purchases ?
+                ( <ChartistGraph data={json.metrics.purchases} type={'Line'} />) :
+                (<img src={json.meta.loading_image_path} />)
+              }
+
+            </div>
+            <div className="well">
+              {json.metrics.returns ?
+                ( <ChartistGraph data={json.metrics.returns} type={'Line'} />) :
+                (<img src={json.meta.loading_image_path} />)
+              }
+            </div>
+            <div className="well">
+              {json.metrics.cart ?
+                ( <ChartistGraph data={json.metrics.cart} type={'Line'} />) :
+                (<img src={json.meta.loading_image_path} />)
+              }
+            </div>
           </div>
         </div>
       </div>
