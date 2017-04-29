@@ -8,7 +8,7 @@ Views.PagesIndex = (json) => {
     return (
       <li className="list-group-item" key={item.key}>
         <p>{item.name}</p>
-        <a href={"/cart?id="+item.key} data-bz-remote='post'>Add to Cart</a>
+        <a href={"/cart?id="+item.key} data-bz-remote='post' data-bz-silent>Add to Cart</a>
         <a href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote='get'>update me</a>
         <div><span className="badge" style={{fontSize: 9}}>{item.quantity}</span></div>
       </li>
@@ -39,13 +39,19 @@ Views.PagesIndex = (json) => {
     </nav>
   )
 
-  let pagination_snippet = {__html: json.products.pagination_snippet}
+  let pagination_snippet = {__html: json.products.meta.pagination_snippet}
 
   return (
     <div>
       <div>
         {nav}
       </div>
+
+
+      <div className="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+      </div>
+
       <div className="container">
         <div className="row">
           <div className="col-lg-8 col-lg-offset-0 col-md-8 col-md-offset-0">

@@ -10,7 +10,7 @@ json.meta do
 end
 
 json.products do
-  page_num = params[:page]
+  page_num = params[:page] || 1
   products = Product.page(page_num).per(5)
 
   json.list do
@@ -22,7 +22,9 @@ json.products do
     end
   end
 
-  json.pagination_snippet "#{paginate(products, {prefix_path: 'products'})}"
+  json.meta do
+    json.pagination_snippet "#{paginate(products, {prefix_path: 'products'})}"
+  end
 end
 
 json.resource defer: :manual do
