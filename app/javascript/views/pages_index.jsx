@@ -1,6 +1,8 @@
 import {Views} from '../components/view'
 import {Tabs, Pane} from '../components/tabs'
+import Notification from '../components/notification'
 import ChartistGraph from 'react-chartist'
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 Views.PagesIndex = (json) => {
   console.log(json)
@@ -43,14 +45,12 @@ Views.PagesIndex = (json) => {
 
   return (
     <div>
+      <Notification message={json.header.alert}/>
       <div>
         {nav}
       </div>
 
 
-      <div className="alert alert-success" role="alert">
-        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-      </div>
 
       <div className="container">
         <div className="row">

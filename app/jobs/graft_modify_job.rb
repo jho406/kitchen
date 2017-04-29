@@ -12,6 +12,9 @@ class GraftModifyJob < ApplicationJob
       node = PagesController.render :index, locals: { breezy_filter: path , params:{page: 1}}
       ActionCable.server.broadcast "breezy_channel", [:add, "data.#{path}", node]
     end
+
+    node = PagesController.render :index, locals: { breezy_filter: 'header.alert', alert_message:{message: 'Yes!!!!', level: 'success'}}
+    ActionCable.server.broadcast "breezy_channel", [:add, "data.header.alert", node]
   end
 end
 

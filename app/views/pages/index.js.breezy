@@ -1,8 +1,7 @@
 json.header do |json|
   json.juice_cart Cart.where(product_id: 1).count
   json.total_cart Cart.count
-
-  json.notifications []
+  json.alert defined?(alert_message) ? alert_message : nil
 end
 
 json.meta do
