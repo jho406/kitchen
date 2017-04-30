@@ -10,7 +10,9 @@ class Notification extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this._notificationSystem && nextProps.message) {
-      this._notificationSystem.addNotification(nextProps.message);
+      if((this.props.message && this.props.message.id) != nextProps.message.id) {
+        this._notificationSystem.addNotification(nextProps.message);
+      }
     }
   }
 
