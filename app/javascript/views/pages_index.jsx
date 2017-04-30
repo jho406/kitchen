@@ -4,6 +4,7 @@ import Notification from '../components/notification'
 import ChartistGraph from 'react-chartist'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import ItemModal from '../components/item_modal'
+import Nav from '../components/nav'
 
 Views.PagesIndex = (json) => {
   console.log(json)
@@ -13,31 +14,12 @@ Views.PagesIndex = (json) => {
     )
   })
 
-  let nav = (
-    <nav className="navbar navbar-default navigation-clean">
-      <div className="container">
-        <div className="navbar-header"><a href="#" className="navbar-brand navbar-link">Shopping </a>
-          <button data-toggle="collapse" data-target="#navcol-1" className="navbar-toggle collapsed"><span className="sr-only">Toggle navigation</span><span className="icon-bar" /><span className="icon-bar" /><span className="icon-bar" /></button>
-        </div>
-        <div className="collapse navbar-collapse" id="navcol-1">
-          <ul className="nav navbar-nav navbar-right">
-            <li role="presentation" className="active"><a href="#">Home </a></li>
-            <li role="presentation"><a href="#">Juice Cart ({json.header.juice_cart})</a></li>
-            <li role="presentation"><a href="#">Cart ({json.header.total_cart})</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
-
   let pagination_snippet = {__html: json.products.meta.pagination_snippet}
 
   return (
     <div>
       <Notification message={json.header.alert}/>
-      <div>
-        {nav}
-      </div>
+      <Nav header={json.header} />
 
       <div className="container">
         <div className="row">

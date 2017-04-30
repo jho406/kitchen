@@ -21,6 +21,7 @@ json.products do
 
       json.comments(defer: :manual) do
         json.array!(product.comments, key: :id) do |comment|
+          sleep 3
           json.id comment.id
           json.body comment.body
         end
