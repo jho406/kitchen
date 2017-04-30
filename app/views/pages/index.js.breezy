@@ -18,6 +18,13 @@ json.products do
       json.key product.id
       json.name product.name
       json.quantity product.qty
+
+      json.comments(defer: :manual) do
+        json.array!(product.comments, key: :id) do |comment|
+          json.id comment.id
+          json.body comment.body
+        end
+      end
     end
   end
 
