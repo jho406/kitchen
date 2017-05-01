@@ -23,12 +23,7 @@ ActiveRecord::Base.transaction do
   Cart.create(product: product_3, qty: 5)
   Cart.create(product: product_4, qty: 5)
 
-  Message.create(body: 'hello')
-  Message.create(body: 'hi again')
-  Message.create(body: 'wow')
-  Message.create(body: 'its working')
-  Message.create(body: 'some sample messages')
-  Message.create(body: 'where to?')
-  Message.create(body: 'what time is it')
-  Message.create(body: 'hello again')
+  product_1.comments.add(body: "hello there")
+  product_1.comments.add(body: "hello there again")
+  product_2.comments.add(body: "its working!")
 end
