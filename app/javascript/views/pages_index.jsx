@@ -10,7 +10,7 @@ Views.PagesIndex = (json) => {
   console.log(json)
   let products = json.products.list.map((item)=>{
     return (
-      <ItemModal item={item} meta={json.meta}/>
+      <ItemModal item={item} meta={json.meta} key={item.key}/>
     )
   })
 
@@ -28,7 +28,12 @@ Views.PagesIndex = (json) => {
               <Pane label='Products' >
                 <p>First tab content.</p>
                 <ul className="list-group">
-                  {products}
+                  <CSSTransitionGroup
+                    transitionName="example"
+                    transitionEnterTimeout={300}
+                    transitionLeave={false}>
+                    {products}
+                  </CSSTransitionGroup>
                 </ul>
 
                 <nav dangerouslySetInnerHTML={pagination_snippet} />
