@@ -53,21 +53,21 @@ Views.PagesIndex = (json) => {
                 ( <ChartistGraph data={json.metrics.purchases} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
-              <a href="?_breezy_filter=metrics.purchases" data-bz-remote={true} data-bz-async> click to refresh </a>
+              <a href="?_breezy_filter=metrics.purchases" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
             <div className="well">
               {json.metrics.returns ?
                 ( <ChartistGraph data={json.metrics.returns} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
-              <a href="?_breezy_filter=metrics.returns" data-bz-remote={true} data-bz-async> click to refresh </a>
+              <a href="?_breezy_filter=metrics.returns" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
             <div className="well">
               {json.metrics.cart ?
                 ( <ChartistGraph data={json.metrics.cart} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
-              <a href="?_breezy_filter=metrics.cart" data-bz-remote={true} data-bz-async> click to refresh </a>
+              <a href="?_breezy_filter=metrics.cart" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
           </div>
         </div>

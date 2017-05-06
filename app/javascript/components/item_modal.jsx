@@ -43,8 +43,8 @@ class ItemModal extends React.Component {
     return (
       <li className="list-group-item" key={item.key}>
         <p>{item.name}</p>
-        <a href={"/cart?id="+item.key} data-bz-remote='post' data-bz-silent>Add to Cart</a>
-        <a href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote='get'>update me</a>
+        <a href={"/cart?id="+item.key} data-bz-remote='post' data-bz-remote-async data-bz-silent>Add to Cart</a>
+        <a href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote-async data-bz-remote='get'>update me</a>
         <div><span className="badge" style={{fontSize: 9}}>{item.quantity}</span></div>
         <a href={"?_breezy_filter=products.list.id="+item.key+'.comments'}  onClick={this.openModal} data-bz-remote data-bz-async>Show Comments</a>
         <Modal
