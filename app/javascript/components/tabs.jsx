@@ -34,10 +34,15 @@ class Tabs extends React.Component {
       let href = child.props.href || '#'
       let remote = child.props['data-bz-remote']
       let pushState = child.props['data-bz-push-state']
+      let classNameForTutorial;
+      if (child.props.label == "Resources") {
+        classNameForTutorial = "circle1"
+      }
       return(
         <li key={index} className={activeClass}>
           <a
             href={href}
+            className={classNameForTutorial}
             data-bz-remote={remote}
             data-bz-push-state={pushState}
             role="tab"

@@ -8,9 +8,9 @@ import Nav from '../components/nav'
 
 Views.PagesIndex = (json) => {
   console.log(json)
-  let products = json.products.list.map((item)=>{
+  let products = json.products.list.map((item, index)=>{
     return (
-      <ItemModal item={item} meta={json.meta} key={item.key}/>
+      <ItemModal item={item} meta={json.meta} index={index} key={item.key}/>
     )
   })
 
@@ -36,7 +36,7 @@ Views.PagesIndex = (json) => {
                   </CSSTransitionGroup>
                 </ul>
 
-                <nav dangerouslySetInnerHTML={pagination_snippet} />
+                <nav className='circle5' dangerouslySetInnerHTML={pagination_snippet} />
               </Pane>
               <Pane label="Resources" href='?_breezy_filter=resource' data-bz-remote data-bz-push-state={false}>
                 {
@@ -48,21 +48,21 @@ Views.PagesIndex = (json) => {
             </Tabs>
           </div>
           <div className="col-lg-4 col-md-4">
-            <div className="well">
+            <div className="well circle6">
               {json.metrics.purchases ?
                 ( <ChartistGraph data={json.metrics.purchases} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
               <a href="?_breezy_filter=metrics.purchases" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
-            <div className="well">
+            <div className="well circle7">
               {json.metrics.returns ?
                 ( <ChartistGraph data={json.metrics.returns} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
               <a href="?_breezy_filter=metrics.returns" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
-            <div className="well">
+            <div className="well circle8">
               {json.metrics.cart ?
                 ( <ChartistGraph data={json.metrics.cart} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)

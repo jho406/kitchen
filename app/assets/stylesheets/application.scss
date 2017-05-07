@@ -24,3 +24,35 @@
   transition: opacity 500ms ease-in;
 }
 
+.circle::after {
+    content: "1";
+    padding: 5px;
+    font: 15px Arial, sans-serif;
+    position: absolute;
+
+    width: 2em;
+    height: 2em;
+    box-sizing: initial;
+
+    background: #fff;
+    border: 0.1em solid #666;
+    color: #666;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 800;
+    line-height: 2em;
+    box-sizing: content-box;
+}
+
+
+.circle1::after{ @extend .circle;  content: "1";}
+.circle2::after{ @extend .circle;  content: "2";}
+.circle3::after{ @extend .circle;  content: "3";}
+.circle4::after{ @extend .circle;  content: "4";}
+.circle5::after{ @extend .circle;  content: "5";}
+.circle6::after{ @extend .circle;  content: "6";}
+.circle7::after{ @extend .circle;  content: "7";}
+.circle8::after{ @extend .circle;  content: "8";}
+.circle9::after{ @extend .circle;  content: "9";}
+.circle10::after{ @extend .circle;  content: "10";}
+

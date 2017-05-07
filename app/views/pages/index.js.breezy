@@ -17,7 +17,7 @@ json.products do
       json.id product.id
       json.key product.id
       json.name product.name
-      json.quantity product.qty
+      json.updated_at product.updated_at.to_time.to_s(:time)
 
       json.comments(defer: :manual) do
         json.array!(product.comments, key: :id) do |comment|
@@ -41,7 +41,7 @@ end
 
 json.metrics do
   json.purchases defer: :auto do
-    sleep 2
+    sleep 5
     json.labels [1,2,3,4]
     json.series [[rand(0..10),9,7,8]]
   end

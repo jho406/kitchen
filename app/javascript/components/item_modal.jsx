@@ -39,14 +39,25 @@ class ItemModal extends React.Component {
 
   render() {
     let item = this.props.item
+    let cartClass
+    let updateClass
+    let commentClass
+    if (this.props.index == 0) {
+      cartClass = 'circle2'
+      updateClass = 'circle3'
+      commentClass = 'circle4'
+    }
+
 
     return (
       <li className="list-group-item" key={item.key}>
         <p>{item.name}</p>
-        <a href={"/cart?id="+item.key} data-bz-remote='post' data-bz-remote-async data-bz-silent>Add to Cart</a>
-        <a href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote-async data-bz-remote='get'>update me</a>
-        <div><span className="badge" style={{fontSize: 9}}>{item.quantity}</span></div>
-        <a href={"?_breezy_filter=products.list.id="+item.key+'.comments'}  onClick={this.openModal} data-bz-remote data-bz-async>Show Comments</a>
+        <p> last updated: <strong>{item.updated_at}</strong></p>
+        <div className="btn-group btn-group-justified" role="group" >
+          <a className={`btn btn-default ${cartClass}`} href={"/cart?id="+item.key} data-bz-remote='post' data-bz-remote-async data-bz-silent>Add to Cart</a>
+          <a className={`btn btn-default ${updateClass}`}  href={"?_breezy_filter=products.list.id="+item.key} data-bz-remote-async data-bz-remote='get'>update me</a>
+          <a className={`btn btn-default ${commentClass}`} href={"?_breezy_filter=products.list.id="+item.key+'.comments'}  onClick={this.openModal} data-bz-remote data-bz-remote-async>Show Comments</a>
+        </div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
