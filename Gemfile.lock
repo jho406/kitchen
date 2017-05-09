@@ -8,14 +8,6 @@ GIT
       sprockets (~> 4.x)
       sprockets-rails (< 4.0)
 
-PATH
-  remote: ../breezy
-  specs:
-    breezy (0.1.4)
-      actionpack (>= 4.0, < 6.0)
-      coffee-rails (~> 4.0)
-      jbuilder (>= 1.5, < 3.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +63,10 @@ GEM
       sass (>= 3.3.4)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
+    breezy (0.1.4)
+      actionpack (>= 4.0, < 6.0)
+      coffee-rails (~> 4.0)
+      jbuilder (>= 1.5, < 3.0)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.13.0)
@@ -132,7 +128,7 @@ GEM
       mini_portile2 (~> 2.1.0)
     public_suffix (2.0.5)
     puma (3.8.2)
-    rack (2.0.1)
+    rack (2.0.2)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.0.rc1)
@@ -218,7 +214,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootswatch-rails
-  breezy!
+  breezy
   byebug
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
