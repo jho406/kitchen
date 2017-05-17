@@ -52,8 +52,7 @@ json.metrics do
     json.series [[rand(0..10),9,7,8]]
   end
 
-  json.cart defer: :auto do
-    sleep 2
+  json.cart do
     json.labels [1,2,3,4]
     json.series [[rand(0..10),9,7,8]]
   end

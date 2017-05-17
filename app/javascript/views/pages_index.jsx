@@ -67,7 +67,6 @@ Views.PagesIndex = (json) => {
                 ( <ChartistGraph data={json.metrics.cart} type={'Line'} />) :
                 (<img src={json.meta.loading_image_path} />)
               }
-              <a href="?_breezy_filter=metrics.cart" data-bz-remote={true} data-bz-remote-async> click to refresh </a>
             </div>
           </div>
         </div>
